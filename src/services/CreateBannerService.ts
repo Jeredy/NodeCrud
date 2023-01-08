@@ -13,7 +13,7 @@ export class CreateBannerService {
     description,
     link,
   }: BannerRequest): Promise<Banner | Error> {
-    const repo = myDataSource.getRepository("banners");
+    const repo = myDataSource.getRepository(Banner);
 
     //SELECT * FROM CATEGORIES WHERE NAME = "NAME" LIMIT 1
     if (

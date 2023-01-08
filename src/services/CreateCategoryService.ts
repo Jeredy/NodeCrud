@@ -11,7 +11,7 @@ export class CreateCategoryService {
     name,
     description,
   }: CategoryRequest): Promise<Category | Error> {
-    const repo = myDataSource.getRepository("Category");
+    const repo = myDataSource.getRepository(Category);
 
     //SELECT * FROM CATEGORIES WHERE NAME = "NAME" LIMIT 1
     if (

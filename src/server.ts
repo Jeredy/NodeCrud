@@ -1,7 +1,12 @@
 import express from "express";
 import { myDataSource } from "../ormconfig";
-import { routes } from "./routes";
 import "dotenv/config";
+import {
+  AuthRoutes,
+  BannerRoutes,
+  CategoryRoutes,
+  VideoRoutes,
+} from "./routes";
 
 const cookieParser = require("cookie-parser");
 // establish database connection
@@ -17,7 +22,7 @@ myDataSource
 const app = express();
 
 app.use(express.json());
-app.use(routes);
+app.use(AuthRoutes, BannerRoutes, CategoryRoutes, VideoRoutes);
 app.use(cookieParser());
 
 app.listen(3000, () => console.log("Server is running"));
