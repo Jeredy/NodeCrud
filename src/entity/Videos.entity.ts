@@ -21,7 +21,13 @@ export class Videos {
   description: string;
 
   @Column()
+  image: string;
+
+  @Column()
   duration: number;
+
+  @Column()
+  rate: number;
 
   @Column()
   year: number;

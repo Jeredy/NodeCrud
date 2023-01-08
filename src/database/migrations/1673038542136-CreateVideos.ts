@@ -21,12 +21,20 @@ export class CreateVideos1673038542136 implements MigrationInterface {
             type: "varchar",
           },
           {
+            name: "image",
+            type: "varchar",
+          },
+          {
             name: "category_id",
             type: "uuid",
           },
           {
             name: "duration",
             type: "numeric",
+          },
+          {
+            name: "rate",
+            type: "real",
           },
           {
             name: "year",

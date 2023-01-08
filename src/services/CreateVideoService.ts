@@ -7,7 +7,9 @@ type VideoRequest = {
   description: string;
   category_id: string;
   duration: number;
+  image: string;
   year: number;
+  rate: number;
 };
 
 export class CreateVideoService {
@@ -16,7 +18,9 @@ export class CreateVideoService {
     description,
     category_id,
     duration,
+    image,
     year,
+    rate,
   }: VideoRequest): Promise<Videos | Error> {
     const repo = myDataSource.getRepository(Videos);
     const repoCategory = myDataSource.getRepository(Category);
@@ -25,12 +29,18 @@ export class CreateVideoService {
       return new Error("Category does not exists!");
     }
 
+    if (await repo.findOne({ where: { name } })) {
+      return new Error("Category name already exists!");
+    }
+
     const video = repo.create({
       name,
       description,
       category_id,
       duration,
+      image,
       year,
+      rate,
     });
 
     await repo.save(video);

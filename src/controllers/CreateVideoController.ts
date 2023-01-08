@@ -3,7 +3,8 @@ import { CreateVideoService } from "../services/CreateVideoService";
 
 export class CreateVideoController {
   async handle(request: Request, response: Response) {
-    const { name, description, category_id, duration, year } = request.body;
+    const { name, description, category_id, duration, image, year, rate } =
+      request.body;
     const service = new CreateVideoService();
 
     const result = service.execute({
@@ -11,7 +12,9 @@ export class CreateVideoController {
       description,
       category_id,
       duration,
+      image,
       year,
+      rate,
     });
 
     if (result instanceof Error) {
