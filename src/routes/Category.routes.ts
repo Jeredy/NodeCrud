@@ -7,7 +7,31 @@ import { UserAuthMiddleware } from "../middleware/auth";
 
 const CategoryRoutes = Router();
 
-//CATEGORIES
+/**
+ * @swagger
+ * components:
+ *    schemas:
+ *      Category:
+ *        type: object
+ *        required:
+ *          - name
+ *          - description
+ *        properties:
+ *          id:
+ *             type: string
+ *             description: The auto-generated id of Category
+ *          name:
+ *              type: string
+ *              description: The category name
+ *          description:
+ *              type: string
+ *              description: The category description
+ *        example:
+ *          id: asd9283_adcb
+ *          name: Comedy
+ *          description: Funny Movies
+ */
+
 CategoryRoutes.post(
   "/categories",
   new UserAuthMiddleware().handle,

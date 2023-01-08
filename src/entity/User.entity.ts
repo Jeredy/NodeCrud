@@ -1,6 +1,6 @@
 import * as bcrypt from "bcryptjs";
 import { IsNotEmpty } from "class-validator";
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
 
 @Entity({ name: "users", synchronize: true })
@@ -23,6 +23,9 @@ export class Users {
   checkIfUnencryptedPasswordIsValid(unencryptedPassword: string) {
     return bcrypt.compareSync(unencryptedPassword, this.password);
   }
+
+  @CreateDateColumn()
+  created_at: Date;
 
   constructor() {
     if (!this.id) {
