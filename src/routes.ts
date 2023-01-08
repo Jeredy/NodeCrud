@@ -11,24 +11,65 @@ import { GetAllVideosController } from "./controllers/GetAllVideosController";
 import { GetVideoByCategoryController } from "./controllers/GetVideoByCategoryController";
 import { GetVideoController } from "./controllers/GetVideoController";
 import { UpdateCategoryController } from "./controllers/UpdateCategoryController";
+import { UserAuthMiddleware } from "./middleware/auth";
 
 const routes = Router();
 
 //CATEGORIES
-routes.post("/categories", new CreateCategoryController().handle);
-routes.get("/categories", new GetAllCategoriesController().handle);
-routes.delete("/categories/:id", new DeleteCategoryController().handle);
-routes.put("/categories/:id", new UpdateCategoryController().handle);
+routes.post(
+  "/categories",
+  new UserAuthMiddleware().handle,
+  new CreateCategoryController().handle
+);
+routes.get(
+  "/categories",
+  new UserAuthMiddleware().handle,
+  new GetAllCategoriesController().handle
+);
+routes.delete(
+  "/categories/:id",
+  new UserAuthMiddleware().handle,
+  new DeleteCategoryController().handle
+);
+routes.put(
+  "/categories/:id",
+  new UserAuthMiddleware().handle,
+  new UpdateCategoryController().handle
+);
 
 //VIDEOS
-routes.post("/videos", new CreateVideoController().handle);
-routes.get("/videos", new GetAllVideosController().handle);
-routes.get("/videos/:id", new GetVideoController().handle);
-routes.get("/videos/categoryId/:id", new GetVideoByCategoryController().handle);
+routes.post(
+  "/videos",
+  new UserAuthMiddleware().handle,
+  new CreateVideoController().handle
+);
+routes.get(
+  "/videos",
+  new UserAuthMiddleware().handle,
+  new GetAllVideosController().handle
+);
+routes.get(
+  "/videos/:id",
+  new UserAuthMiddleware().handle,
+  new GetVideoController().handle
+);
+routes.get(
+  "/videos/categoryId/:id",
+  new UserAuthMiddleware().handle,
+  new GetVideoByCategoryController().handle
+);
 
 //BANNERS
-routes.post("/banners", new CreateBannerController().handle);
-routes.get("/banners", new GetAllBannersController().handle);
+routes.post(
+  "/banners",
+  new UserAuthMiddleware().handle,
+  new CreateBannerController().handle
+);
+routes.get(
+  "/banners",
+  new UserAuthMiddleware().handle,
+  new GetAllBannersController().handle
+);
 
 //AUTH
 routes.post("/login", new AuthController().handle);
