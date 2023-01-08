@@ -1,5 +1,7 @@
 import { Router } from "express";
+import AuthController from "./controllers/AuthController";
 import { CreateCategoryController } from "./controllers/CreateCategoryController";
+import UserController from "./controllers/CreateUserController";
 import { CreateVideoController } from "./controllers/CreateVideoController";
 import { DeleteCategoryController } from "./controllers/DeleteCategoryController";
 import { GetAllCategoriesController } from "./controllers/GetAllCategoriesController";
@@ -17,5 +19,9 @@ routes.put("/categories/:id", new UpdateCategoryController().handle);
 //VIDEOS
 routes.post("/videos", new CreateVideoController().handle);
 routes.get("/videos", new GetAllVideosController().handle);
+
+//AUTH
+routes.post("/login", new AuthController().handle);
+routes.post("/createUser", new UserController().handle);
 
 export { routes };
