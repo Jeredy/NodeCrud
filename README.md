@@ -1,4 +1,4 @@
-# NodeNoMovies (NodeJS - Swagger)
+# Node NoMovies (NodeJS - Swagger)
 
   A backend application to NoMovies(mobile app)
  
@@ -21,4 +21,6 @@
   
   ## Swagger
   - Authentication: Just add the auth token to authentication field
+  - Link: http://localhost:3000/api-docs/
+  
   
