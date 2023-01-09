@@ -21,6 +21,7 @@
   
   ## Swagger
   - Authentication: Just add the auth token to authentication field
-  - Link: http://localhost:PORT/api-docs/ (change the variable PORT to the currento port number. The default PORT number is 3000)
+  - Link: http://localhost:PORT/api-docs/ 
+      - (change the variable PORT to the currento port number. The default PORT number is 3000)
   
   
