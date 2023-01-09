@@ -1,4 +1,4 @@
-# NodeNoMovies (NodeJS - Swagger)📱
+# NodeNoMovies (NodeJS - Swagger)
 
   A backend application to NoMovies(mobile app)
  
