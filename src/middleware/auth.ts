@@ -4,7 +4,11 @@ const jwt = require("jsonwebtoken");
 
 export class UserAuthMiddleware {
   handle(req, res, next) {
-    const token = req.rawHeaders[1]?.split(" ")[1];
+    const token =
+      req.rawHeaders[req.rawHeaders.indexOf("Authorization") + 1]?.split(
+        " "
+      )[1];
+
     if (token) {
       jwt.verify(token, config.jwtSecret, (err) => {
         if (err) {

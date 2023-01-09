@@ -39,6 +39,8 @@ const BannerRoutes = Router();
  * @swagger
  * /banners:
  *  get:
+ *      security:
+ *         - bearerAuth: []
  *      summary: Authenticate the user
  *      tags: [Banner]
  *      responses:
@@ -51,11 +53,38 @@ const BannerRoutes = Router();
  *                          $ref: '#/components/schemas/Banner'
  */
 
+/**
+ * @swagger
+ * /banners:
+ *  post:
+ *      security:
+ *         - bearerAuth: []
+ *      summary: Create a new banner
+ *      tags: [Banner]
+ *      requestBody:
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      $ref: '#/components/schemas/Banner'
+ *      responses:
+ *          200:
+ *              description: The banner was created
+ *              content:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          $ref: '#/components/schemas/Banner'
+ *          400:
+ *              description: The params are invalid
+ */
+
 BannerRoutes.post(
   "/banners",
   new UserAuthMiddleware().handle,
   new CreateBannerController().handle
 );
+
 BannerRoutes.get(
   "/banners",
   new UserAuthMiddleware().handle,

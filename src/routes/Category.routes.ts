@@ -32,22 +32,132 @@ const CategoryRoutes = Router();
  *          description: Funny Movies
  */
 
+/**
+ * @swagger
+ * /categories:
+ *  post:
+ *      security:
+ *         - bearerAuth: []
+ *      summary: Create a new category
+ *      tags: [Category]
+ *      requestBody:
+ *           required: true
+ *           content:
+ *              application/json:
+ *                schema:
+ *                  $ref: '#/components/schemas/Category'
+ *      responses:
+ *          200:
+ *              description: The category was successfuly created
+ *              contents:
+ *                  application/json:
+ *                      schema:
+ *                          $ref: '#/components/schemas/Category'
+ *          400:
+ *              description: Error while creating the category
+ */
+
+/**
+ * @swagger
+ * /categories:
+ *  get:
+ *      security:
+ *         - bearerAuth: []
+ *      summary: Get the category by id
+ *      tags: [Category]
+ *
+ *      responses:
+ *          200:
+ *              description: The category description by id
+ *              contents:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          $ref: '#/components/schemas/Category'
+ *          400:
+ *              description: The category was not found
+ */
+
+/**
+ * @swagger
+ * /categories/{id}:
+ *  delete:
+ *      security:
+ *         - bearerAuth: []
+ *      summary: Get the category by id
+ *      tags: [Category]
+ *      parameters:
+ *         - in: path
+ *           name: id
+ *           schema:
+ *             type: string
+ *           required: true
+ *           description: The category id
+ *      responses:
+ *          200:
+ *              description: The category was deleted
+ *              contents:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          $ref: '#/components/schemas/Category'
+ *          400:
+ *              description: The category was not found
+ */
+
+/**
+ * @swagger
+ * /categories/{id}:
+ *  put:
+ *      security:
+ *         - bearerAuth: []
+ *      summary: Get the category by id
+ *      tags: [Category]
+ *      requestBody:
+ *           required: true
+ *           content:
+ *              application/json:
+ *                schema:
+ *                  $ref: '#/components/schemas/Category'
+ *      parameters:
+ *         - in: path
+ *           name: id
+ *           schema:
+ *             type: string
+ *           required: true
+ *           description: The category id
+ *      responses:
+ *          200:
+ *              description: The category was updated
+ *              contents:
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          $ref: '#/components/schemas/Category'
+ *          400:
+ *              description: The category was not found
+ */
+
 CategoryRoutes.post(
+  //OK
   "/categories",
   new UserAuthMiddleware().handle,
   new CreateCategoryController().handle
 );
 CategoryRoutes.get(
+  //OK
   "/categories",
   new UserAuthMiddleware().handle,
   new GetAllCategoriesController().handle
 );
 CategoryRoutes.delete(
+  //ok
   "/categories/:id",
   new UserAuthMiddleware().handle,
   new DeleteCategoryController().handle
 );
 CategoryRoutes.put(
+  //ok
   "/categories/:id",
   new UserAuthMiddleware().handle,
   new UpdateCategoryController().handle
